@@ -1,0 +1,25 @@
+version: '2.1'
+services:
+  mysql:
+    image: mysql:5.7.19
+    ports:
+      - 3306
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 60s
+      retries: 5
+  tomcat:
+    image: tomcat:8.0
+    ports:
+      - 8080
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8080"]
+        interval: 10s
+        timeout: 60s
+        retries: 5
+    depends_on:
+      mysql:
+        condition: service_healthy
