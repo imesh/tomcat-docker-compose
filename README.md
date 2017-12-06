@@ -2,7 +2,7 @@
 
 This repository contains a reference Docker Compose template for Tomcat. It demonstrates usage of publicly available Docker images, health checks, and managing startup order dependencies.
 
-# Getting Started
+## Getting Started
 
 1. Clone this repository:
 
